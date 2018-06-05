@@ -44,6 +44,41 @@
                           <input type="text" class="form-control" id="name" placeholder="Task Title...">
                         </div>
                       </div>
+
+                      <!-- <div class="form-group animated bounceInLeft py-1">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="mdi-24px mdi mdi-altimeter"></i>
+                            </span>
+                          </div>
+                          <input type="text" class="form-control" id="name" placeholder="Task Title...">
+                        </div>
+                      </div> -->
+
+                      <div class="form-group animated bounceInLeft py-1">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <!-- <label class="label-control">Datetime Picker</label> -->
+                            <span class="input-group-text">
+                              <i class="mdi mdi-18px mdi-calendar-clock"></i>
+                            </span>
+                          </div>
+                          <input type="text" class="form-control datetimepicker" value="10/05/2016"/>
+                          <span class="material-input"></span>
+                        </div>
+                      </div>
+
+                      <div class="form-group animated bounceInLeft py-1">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <!-- <i class="mdi-24px mdi mdi-altimeter"></i> -->
+                            </span>
+                          </div>
+                          <textarea class="form-control" placeholder="Task Description" rows="2"></textarea>
+                        </div>
+                      </div>
                       
                       <div class="text-center mr-auto py-4">
                         <button class="btn animated bounceInUp btn-primary">
@@ -85,7 +120,7 @@
                 <a href="javascript:void(0)" class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">
                   <i class="material-icons">add_alert</i> Create Schedule
                 </a>
-                <a href="javascript:void(0)" class="dropdown-item">
+                <a href="javascript:void(0)" class="dropdown-item disabled">
                   <i class="material-icons">create</i> Edit Profile
                 </a>
                 <a href="javascript:void(0)" class="dropdown-item">
@@ -130,10 +165,10 @@
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
                 </div>
                 <div class="modal-body text-center">
-                  <h5>Are you sure you want to <span class="text-danger">Delete</span> this task? </h5>
+                  <h5>Are you sure you want to <span class="text-danger">delete</span> this task? </h5>
                 </div>
                 <div class="modal-footer mx-auto">
-                    <button type="button" class="btn btn-info px-5" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-link text-dark px-5" data-dismiss="modal">No</button>
                     <button type="button" class="btn btn-danger px-5">Yes</button>
                 </div>
               </div>
@@ -372,16 +407,48 @@
 
     <!--   Core JS Files   -->
     <script src="../js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/core/bootstrap.min.js" type="text/javascript"></script>
     <script src="../js/core/popper.min.js" type="text/javascript"></script>
     <script src="../js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
     <script src="../js/plugins/moment.min.js"></script>
-    <script src="../js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
     <script src="../js/plugins/nouislider.min.js" type="text/javascript"></script>
-    <script src="../js/material-kit.js" type="text/javascript"></script>
-    <!-- <script src="../js/custom.js" type="text/javascript"></script> -->
-    <!-- <script src="../js/plugins/holder.min.js" type="text/javascript"></script> -->
-
-    <script src="../js/plugins/bootstrap-tagsinput.js"></script>
+    <script src="../js/plugins/bootstrap-select.js" type="text/javascript"></script>
     <script src="../js/plugins/jasny-bootstrap.min.js"></script>
+    <script src="../js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="../js/plugins/jquery.tagsinput.min.js"></script>
+    <script src="../js/material-kit.js" type="text/javascript"></script>
+
+    <script>
+    //javascript for init
+    $('.datetimepicker').datetimepicker({
+    icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-chevron-up",
+        down: "fa fa-chevron-down",
+        previous: 'fa fa-chevron-left',
+        next: 'fa fa-chevron-right',
+        today: 'fa fa-screenshot',
+        clear: 'fa fa-trash',
+        close: 'fa fa-remove'
+      }
+    });
+  </script>
+    <script>
+        var header_height;
+        var fixed_section;
+        var floating = false;
+
+        $().ready(function(){
+            suggestions_distance = $("#suggestions").offset();
+            pay_height = $('.fixed-section').outerHeight();
+
+      $(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
+
+      // the body of this function is in assets/material-kit.min.js
+      materialKit.initSliders();
+      materialKit.initFormExtendedDatetimepickers();
+        });
+    </script>
   </body>
 </html>
